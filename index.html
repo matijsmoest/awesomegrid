@@ -1,0 +1,54 @@
+<html ng-app="workshop">
+
+<head>
+	<title>angular</title>
+	
+	<script src="angular.min.js"></script>
+	<script src="workshop.js"></script>
+</head>
+
+<!-- use as *var* instead of $scope -->
+<body ng-controller="AppCtrl as app">
+
+<div ng-show="app.selectedGame">
+	<h1>Name: {{app.selectedGame.name}}</h1>
+	<h1>Year: {{app.selectedGame.yearPublished}}</h1>
+	<img ng-src="http://localhost:3000/{{app.selectedGame.image}}" />
+</div>
+
+name: <input type="text" ng-model="app.search.name" ng-model-options="{debounce:500}"  /><br/>
+rank: <input type="text" ng-model="app.search.rank" ng-model-options="{debounce:500}"  /><br/>
+
+<table>
+
+	<thead>
+		<tr>
+			<td ng-click="app.setOrder('name');">Game</td>
+			<td ng-click="app.setOrder('rank');">Rank</td>
+			<td>Thumbnail</td>
+		</tr>
+	</thead>
+	
+	<tr ng-repeat="game in app.data 
+		| filter:app.search 
+		| orderBy: app.order"
+		ng-click="app.selectGame(game.gameId)"
+		>
+		<td>
+			<div ng-show="app.selectedGame.gameId === game.gameId" >
+				<input type="text" ng-model="game.name"/>
+				<button ng-click="app.updateSelectedGame(game);">update</button>
+			</div>
+			{{game.name}}
+		</td>
+		<td>{{game.rank}}</td>
+		<td>
+			<img ng-src="http://localhost:3000/{{game.thumbnail}}" />
+		</td>
+	</tr>
+	
+</table>
+
+<body>
+
+</html>
