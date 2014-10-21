@@ -38,6 +38,7 @@ rank: <input type="text" ng-model="app.search.rank" ng-model-options="{debounce:
 			<div ng-show="app.selectedGame.gameId === game.gameId" >
 				<input type="text" ng-model="game.name"/>
 				<button ng-click="app.updateSelectedGame(game);">update</button>
+				<button ng-click="app.deleteSelectedGame(game);">delete</button>
 			</div>
 			{{game.name}}
 		</td>

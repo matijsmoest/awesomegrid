@@ -39,6 +39,14 @@ angular.module("workshop", [])
 				});
 		};
 		
+		app.deleteSelectedGame = function(game) {
+			$http.delete(app.url + "/" + app.selectedGame.gameId)
+				.then(function(result) {
+					app.getGames();
+					app.selectedGame = null;
+				});		
+		};
+		
 		app.getGames = function() {
 			$http.get(app.url)
 				.then(function(response) {
