@@ -1,7 +1,7 @@
 <html ng-app="workshop">
 
 <head>
-	<title>angular</title>
+	<title>Awesome Grid - by MM</title>
 	
 	<script src="angular.min.js"></script>
 	<script src="workshop.js"></script>
@@ -31,7 +31,8 @@ rank: <input type="text" ng-model="app.search.rank" ng-model-options="{debounce:
 	
 	<tr ng-repeat="game in app.data 
 		| filter:app.search 
-		| orderBy: app.order"
+		| orderBy: app.order
+		| limitTo: 5"
 		ng-click="app.selectGame(game.gameId)"
 		>
 		<td>
