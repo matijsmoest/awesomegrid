@@ -3,6 +3,7 @@
 <head>
 	<title>Awesome Grid - by MM</title>
 	
+	<link href="bootstrap.min.css" rel="stylesheet">
 	<script src="angular.min.js"></script>
 	<script src="workshop.js"></script>
 </head>
@@ -10,16 +11,24 @@
 <!-- use as *var* instead of $scope -->
 <body ng-controller="AppCtrl as app">
 
-<div ng-show="app.selectedGame">
+<div style="float : right" ng-show="app.selectedGame">
 	<h1>Name: {{app.selectedGame.name}}</h1>
 	<h1>Year: {{app.selectedGame.yearPublished}}</h1>
 	<img ng-src="http://localhost:3000/{{app.selectedGame.image}}" />
 </div>
 
-name: <input type="text" ng-model="app.search.name" ng-model-options="{debounce:500}"  /><br/>
-rank: <input type="text" ng-model="app.search.rank" ng-model-options="{debounce:500}"  /><br/>
+<form>
+	<div class="form-group">
+        <label for="inputEmail">name:</label>
+		<input type="text" ng-model="app.search.name" ng-model-options="{debounce:500}"  /><br/>
+	</div>
+	<div class="form-group">
+        <label for="inputEmail">rank:</label>
+		<input type="text" ng-model="app.search.rank" ng-model-options="{debounce:500}"  /><br/>
+	</div>
+</form>
 
-<table>
+<table class="table">
 
 	<thead>
 		<tr>
